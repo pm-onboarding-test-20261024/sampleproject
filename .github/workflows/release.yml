@@ -39,7 +39,7 @@ jobs:
         run: |
           uv sync --all-extras --no-install-project --no-build
           uv export --locked --all-extras --no-emit-project --no-hashes --output-file dependencies.txt
-          uv run --no-project python -m pip download --only-binary=:all: --dest wheelhouse -r dependencies.txt build setuptools wheel
+          uv run --no-project --directory "$RUNNER_TEMP" --python "$pythonLocation/bin/python" python -m pip download --only-binary=:all: --dest "$GITHUB_WORKSPACE/wheelhouse" -r "$GITHUB_WORKSPACE/dependencies.txt" build setuptools wheel
         env:
           UV_INDEX_PACKAGEMAZE_USERNAME: __token__
           UV_INDEX_PACKAGEMAZE_PASSWORD: ${{ steps.access.outputs.token }}
