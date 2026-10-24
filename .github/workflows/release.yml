@@ -107,6 +107,11 @@ jobs:
         with:
           name: release
           path: dist
+      - id: read-access
+        uses: packagemaze/setup-maze@88f78eca0212b355b26babf206c6151abb62f22b
+        with:
+          feed: pm-onboarding-test-20261024/pypi
+          purpose: install
       - id: access
         uses: packagemaze/setup-maze@88f78eca0212b355b26babf206c6151abb62f22b
         with:
@@ -116,6 +121,8 @@ jobs:
       - name: Publish both built distributions to the test Feed
         run: uv publish --index packagemaze --no-attestations dist/*
         env:
+          UV_INDEX_PACKAGEMAZE_USERNAME: __token__
+          UV_INDEX_PACKAGEMAZE_PASSWORD: ${{ steps.read-access.outputs.token }}
           UV_PUBLISH_TOKEN: ${{ steps.access.outputs.token }}
 
   verify-install:
