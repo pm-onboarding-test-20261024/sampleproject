@@ -26,7 +26,7 @@ build-backend = "setuptools.build_meta" # If not defined, then legacy behavior c
 # There are some restrictions on what makes a valid project name
 # specification here:
 # https://packaging.python.org/specifications/core-metadata/#name
-name = "sampleproject" # REQUIRED, is the only field that cannot be marked as dynamic.
+name = "pm-onboarding-test-sampleproject" # REQUIRED, is the only field that cannot be marked as dynamic.
 
 # Versions should comply with PEP 440:
 # https://www.python.org/dev/peps/pep-0440/
@@ -160,3 +160,11 @@ sample = "sample:main"
 # If there are data files included in your packages that need to be
 # installed, specify them here.
 package-data = { "sample" = ["*.dat"] }
+
+[[tool.uv.index]]
+name = "packagemaze"
+url = "https://pkg.packagemaze.com/pm-onboarding-test-20261024/pypi/simple/"
+publish-url = "https://pkg.packagemaze.com/pm-onboarding-test-20261024/pypi/legacy/"
+default = true
+authenticate = "always"
+
