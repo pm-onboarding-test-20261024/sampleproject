@@ -53,3 +53,18 @@ unchanged.
 This was the first refresh after a scanner interpretation change. A subsequent
 source-only update should preserve those results while allowing reuse of the
 completed reading. No manual Rescan was used.
+
+## Consecutive automatic updates
+
+The source-only main update at `225113d4dae1021e565a8890eb8507ff9087638a`
+kept Project 1 and every dependency declaration unchanged. Its measured interval
+from webhook receipt to the final scan handler completing was 26.995 seconds:
+8.616 seconds inside handlers and 18.379 seconds between them. Handler time
+includes awaited database and provider calls; the gaps are not solely Queue
+latency. This is one sample, not a service-level guarantee or UI refresh time.
+
+After the next protected release, establish a fresh automatic baseline and
+check two consecutive source-only updates. Each should preserve dependency
+checkpoints and history while retaining evidence for the next update to reuse
+the same inputs. A separate manifest-change check must still discover the
+changed declaration. Keep those outcomes separate from package publishing.
