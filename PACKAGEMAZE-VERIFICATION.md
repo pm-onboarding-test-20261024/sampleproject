@@ -27,3 +27,17 @@ provenance or a PackageMaze Trust evaluation.
 
 The workflow runs only when manually dispatched. Updating this record does
 not publish another package version.
+
+## Automatic Project reading
+
+The source expectations in `pyproject.toml` are runtime dependency `peppercorn`,
+extra `dev` containing `check-manifest`, extra `test` containing `coverage`, and
+a separate Build group containing `setuptools` from `[build-system].requires`.
+None of these declarations constrains a version in this fork.
+
+Automatic discovery is verified by a normal GitHub event after a protected
+PackageMaze release. Compare every dependency group with this manifest, keep
+the existing Project identity, and record waiting time separately from
+processing and UI refresh. The first discovery-version refresh is a different
+sample from a later source-only update that can reuse its reading. No manual
+Rescan or publication workflow is needed for this check.
