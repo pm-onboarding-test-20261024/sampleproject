@@ -79,3 +79,13 @@ The declaration intervals and Project entry history remained unchanged.
 This source-only update checks that the completed baseline can be reused.
 Reusing it must preserve those facts and retain the new commit's input evidence
 so another unchanged successor can reuse it too. No manual Rescan is required.
+
+## First unchanged successor
+
+The main push at `f02c40540b094f8101ad024782071c37064cbec8` reused the
+completed baseline at `dc35b3016016e008ac5b7d7d81a57f7d4a2e4d66`. The
+declarations, checkpoints, Project entry history and dependency graph intervals
+were unchanged, and the successor retained a direct link to the same inputs.
+
+This second source-only successor checks that reuse remains valid through an
+intermediate commit rather than only immediately after a fresh reading.
