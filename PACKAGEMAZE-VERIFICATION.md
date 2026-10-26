@@ -33,7 +33,8 @@ not publish another package version.
 The source expectations in `pyproject.toml` are runtime dependency `peppercorn`,
 extra `dev` containing `check-manifest`, extra `test` containing `coverage`, and
 a separate Build group containing `setuptools` from `[build-system].requires`.
-None of these declarations constrains a version in this fork.
+The Build requirement is `setuptools>=61.0`; the other three declarations remain
+unconstrained.
 
 Automatic discovery is verified by a normal GitHub event after a protected
 PackageMaze release. Compare every dependency group with this manifest, keep
