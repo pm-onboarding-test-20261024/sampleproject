@@ -68,3 +68,14 @@ check two consecutive source-only updates. Each should preserve dependency
 checkpoints and history while retaining evidence for the next update to reuse
 the same inputs. A separate manifest-change check must still discover the
 changed declaration. Keep those outcomes separate from package publishing.
+
+## Baseline after the 26 October release
+
+The main push at `dc35b3016016e008ac5b7d7d81a57f7d4a2e4d66` automatically
+refreshed the existing Project. Its runtime, Build and optional declarations,
+version constraints and application dependency graph matched the source.
+The declaration intervals and Project entry history remained unchanged.
+
+This source-only update checks that the completed baseline can be reused.
+Reusing it must preserve those facts and retain the new commit's input evidence
+so another unchanged successor can reuse it too. No manual Rescan is required.
